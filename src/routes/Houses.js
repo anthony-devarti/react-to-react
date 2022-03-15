@@ -4,7 +4,7 @@ import { getLocalStorage, setLocalStorage } from '../utils/localStorage';
 
 export default function Houses() {
   const ENDPOINT = 'Houses';
-  const [Houses, setHouses] = useState();
+  const [houses, setHouses] = useState([]);
   
   useEffect(() => {
     let data = getLocalStorage(ENDPOINT);
@@ -12,38 +12,34 @@ export default function Houses() {
       setHouses(data);
     } else {
       getData(ENDPOINT)
-        .then(() => {
-          setHouses();
+        .then((data) => {
+          setHouses(data);
           setLocalStorage(ENDPOINT, data);
         })
     }
   }, []);
 
-  let HousesList = Houses.map((house) => {
-    return <House House={house} />;
-  });
-
   return (
     <main style={{ padding: "1rem 0" }} className="container">
       <div className="row justify-content-center text-center gap-2">
         <h2>Houses</h2>
-        {HousesList}
+        {houses.map((house) => <House key={house.id} House={house} />)}
       </div>
     </main>
   );
 }
 
 
-const House = ({ house }) => {
+const House = ({ House }) => {
   return (
-    <div class='card col-5 p-3'>
-      <h2>{house.name}</h2>
-      <div>Colors: {house.houseColours}</div>
-      <div>Founder: {house.founder}</div>
-      <div>Animal: {house.animal}</div>
-      <div>Element: {house.element}</div>
-      <div>Ghost: {house.ghost}</div>
-      <div>Common Room: {house.commonRoom}</div>
+    <div className='card col-5 p-3'>
+      <h2>{House.name}</h2>
+      <div>Colors: {House.houseColours}</div>
+      <div>Founder: {House.founder}</div>
+      <div>Animal: {House.animal}</div>
+      <div>Element: {House.element}</div>
+      <div>Ghost: {House.ghost}</div>
+      <div>Common Room: {House.commonRoom}</div>
     </div>
   )
 }

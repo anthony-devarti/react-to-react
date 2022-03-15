@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import  getData  from '../utils/data';
 import { getLocalStorage, setLocalStorage } from '../utils/localStorage';
+import  getData  from '../utils/data';
 
 export default function Elixirs() {
   const ENDPOINT = 'Elixirs';

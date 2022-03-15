@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getLocalStorage, setLocalStorage } from '../utils/localStorage';
-import getData from '../utils/data';
+import getCharData from '../utils/data';
 
 export default function Characters() {
     const ENDPOINT = 'Characters';
@@ -11,7 +11,7 @@ export default function Characters() {
       if (data.length > 0) {
         setCharacters(data);
       } else {
-        getData(ENDPOINT)
+        getCharData(ENDPOINT)
         .then((data) => {
             setCharacters(data);
             setLocalStorage(ENDPOINT, data);
@@ -27,9 +27,9 @@ export default function Characters() {
                     <table className='table tble-hover' style={{ maxwidth: '600px'}}>
                         <thead>
                             <tr>
-                                <th>Full Name</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
+                                <th>Name</th>
+                                <th>Species</th>
+                                <th>House</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,9 +46,9 @@ export default function Characters() {
 const Character = ({character}) => {
     return (
         <tr>
-            <td>{`${character.firstName} ${character.lastName}`}</td>
-            <td>{character.firstName}</td>
-            <td>{character.lastName}</td>
+            <td>{character.name}</td>
+            <td>{character.species}</td>
+            <td>{character.house}</td>
         </tr>
     )
 }

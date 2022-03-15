@@ -14,7 +14,7 @@ import Ingredients from './routes/Ingredients.js';
 import Wizards from './routes/Wizards.js';
 import Elixirs from './routes/Elixirs';
 import Houses from './routes/Houses';
-import Characters from './routes/characters'
+import Characters from './routes/Characters';
 
 const root = document.getElementById("root"); // root element is in the index.html
 

@@ -11,6 +11,7 @@ export default function App() {
         <Link to="./workspace/react-to-react/src/routes/Elixirs.js">Elixirs</Link> |{" "}
         <Link to="./workspace/react-to-react/src/routes/Ingredients.js">Ingredients</Link> |{" "}
         <Link to="./workspace/react-to-react/src/routes/Wizards.js">Wizards</Link>|{" "}
+        <Link to="./workspace/react-to-react/src/routes/Characters.js">Characters</Link>|{" "}
       </nav>
       <Outlet />
     </div>

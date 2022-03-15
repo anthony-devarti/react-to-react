@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { getData } from '../utils/data';
+import getData from '../utils/data';
 import { getLocalStorage, setLocalStorage } from '../utils/localStorage';
 
 export default function Houses() {
   const ENDPOINT = 'Houses';
-  const [houses, setHouses] = useState([]);
+  const [Houses, setHouses] = useState();
   
   useEffect(() => {
     let data = getLocalStorage(ENDPOINT);
@@ -14,20 +14,20 @@ export default function Houses() {
       getData(ENDPOINT)
         .then(() => {
           setHouses();
-          setLocalStorage();
+          setLocalStorage(ENDPOINT, data);
         })
     }
   }, []);
 
-  let housesList = houses.map((house) => {
-    return <House house={house} />;
+  let HousesList = Houses.map((house) => {
+    return <House House={house} />;
   });
 
   return (
-    <main style={{ padding: "1rem 0" }} class="container">
-      <div class="row justify-content-center text-center gap-2">
+    <main style={{ padding: "1rem 0" }} className="container">
+      <div className="row justify-content-center text-center gap-2">
         <h2>Houses</h2>
-        {housesList}
+        {HousesList}
       </div>
     </main>
   );

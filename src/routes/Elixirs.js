@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import { getData } from '../utils/data';
-import { getLocalStorage } from '../utils/localStorage';
+import React, { useEffect, useState } from 'react';
+import  getData  from '../utils/data';
+import { getLocalStorage, setLocalStorage } from '../utils/localStorage';
 
 export default function Elixirs() {
   const ENDPOINT = 'Elixirs';
+  const [elixirs, setElixirs] = useState([]);
   
   useEffect(() => {
     let data = getLocalStorage(ENDPOINT);
@@ -36,7 +37,7 @@ const Elixir = ({ elixir }) => {
         <div><strong>Effect:</strong> {elixir.effect}</div>
         <div><strong>Side Effects:</strong> {elixir.sideEffects}</div>
         <div><strong>Characteristics:</strong> {elixir.characteristics}</div>
-        <div><strong>Ingredients:</strong> {elixir.ingredients.map((ingredient) => ingredient.name).join(', ')}</div>
+        <div><strong>Ingredients:</strong> {elixir.ingredients.map((ingredient) => ingredient.name).join(',')}</div>
         <div><strong>Time:</strong> {elixir.time}</div>
         <div><strong>Difficulty:</strong> {elixir.difficulty}</div>
         <div><strong>Manufacturer:</strong> {elixir.manufacturer}</div>

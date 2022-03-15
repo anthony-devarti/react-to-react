@@ -8,23 +8,27 @@ import {
 
 import './index.css';
 
-import App from './App';
-import Ingredients from './routes/Ingredients';
-import Wizards from './routes/Wizards';
 
-const rootElement = document.getElementById("app"); // root element is in the index.html
+import App from './App.js';
+import Ingredients from './routes/Ingredients.js';
+import Wizards from './routes/Wizards.js';
+import Elixirs from './routes/Elixirs';
+import Houses from './routes/Houses';
+import Characters from './routes/characters'
+
+const root = document.getElementById("root"); // root element is in the index.html
 
 render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="elixirs" element={<Elixirs />} />
-        <Route path="houses" element={<Houses />} />
-        <Route path="wizards" element={<Wizards />} />
-        <Route path="ingredients" element={<Ingredients />} />
+        <Route path="/workspace/react-to-react/src/routes/Elixirs.js" element={<Elixirs />} />
+        <Route path="/workspace/react-to-react/src/routes/Houses.js" element={<Houses />} />
+        <Route path="/workspace/react-to-react/src/routes/Wizards.js" element={<Wizards />} />
+        <Route path="/workspace/react-to-react/src/routes/Ingredients.js" element={<Ingredients />} />
+        <Route path="/workspace/react-to-react/src/routes/Characters.js" element={<Characters />} />
       </Route>
     </Routes>
-  </BrowserRouter>,
-  rootElement
+  </BrowserRouter>, root
 );
 

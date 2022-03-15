@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { getLocalStorage, setLocalStorage } from '../utils/localStorage';
-import { getData } from '../utils/data';
+import getData  from '/workspace/react-to-react/src/utils/data.js';
 
 export default function Ingredients() {
   const ENDPOINT = 'Ingredients';
   const [ingredients, setIngredients] = useState([]);
+  useEffect(() => {
+    let data = getLocalStorage(ENDPOINT);
+    if (data.length > 0) {
+      setIngredients(data);
+    } else {
+      getData(ENDPOINT)
+        .then((data) => {
+          setIngredients(data);
+          setLocalStorage(ENDPOINT, data);
+        })
+    }
+  }, []);
 
   return (
     <main style={{ padding: "1rem 0" }}>
